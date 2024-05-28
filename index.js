@@ -1,4 +1,4 @@
-const { listContacts, getContactById, removeContact, addContact } = require('./src/contacts');
+const { listContacts, getContactById, removeContact, addContact } = require('./contacts');
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
   switch (action) {
@@ -23,10 +23,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 };
 
-invokeAction({
-  action: process.argv[2],
-  id: process.argv[3],
-  name: process.argv[3],
-  email: process.argv[5],
-  phone: process.argv[6],
-});
+const args = process.argv.slice(2);
+const [action, id, name, email, phone] = args;
+
+invokeAction({ action, id, name, email, phone });
